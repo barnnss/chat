@@ -10,7 +10,7 @@ import { useHistory } from "react-router";
 const Signup = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
-  const toast = useToast();
+  const toast = useToast(); //picture undefined = error  
   const history = useHistory();
 
   const [name, setName] = useState();
@@ -70,7 +70,7 @@ const Signup = () => {
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setPicLoading(false);
-      history.push("/chats");
+      history.push("/chats"); 
     } catch (error) {
       toast({
         title: "Error Occured!",
@@ -84,6 +84,7 @@ const Signup = () => {
     }
   };
 
+//for picture, we use cloudinary
   const postDetails = (pics) => {
     setPicLoading(true);
     if (pics === undefined) {
@@ -100,9 +101,9 @@ const Signup = () => {
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
       const data = new FormData();
       data.append("file", pics);
-      data.append("upload_preset", "chat-app");
-      data.append("cloud_name", "piyushproj");
-      fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+      data.append("upload_preset", "antarman");
+      data.append("cloud_name", "dj4ezegik");
+      fetch("https://api.cloudinary.com/v1_1/dj4ezegik", {
         method: "post",
         body: data,
       })
