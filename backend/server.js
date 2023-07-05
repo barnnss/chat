@@ -5,7 +5,7 @@ const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const {notFound , errorHandler } = require("./middleware/errorMiddleware")
-
+const { axios } = require ("axios"); 
 
 dotenv.config();
 
@@ -18,8 +18,8 @@ app.get("/", (req, res) => {
     res.send("API is running successfully");
 });
 
-app.use('/api/user', userRoutes)
-app.use('/api/chat',chatRoutes)
+app.use('/api/user', userRoutes);
+app.use('/api/chat', chatRoutes);
 
 //proper message for error , error handling middlewares
 app.use(notFound);

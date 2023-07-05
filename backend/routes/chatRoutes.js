@@ -1,6 +1,6 @@
 const express = require("express");
 const {
-  accessChat,
+  accessChat
   //fetchChats,
   //createGroupChat,
   //removeFromGroup,

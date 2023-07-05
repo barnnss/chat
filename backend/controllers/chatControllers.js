@@ -1,6 +1,9 @@
 const expressAsyncHandler = require("express-async-handler");
 const Chat = require("../models/chatModel");
+const User = require("../models/userModel");
+
 //for one on one chat
+
 const accessChat = expressAsyncHandler(async (req, res) => {
     const { userId } = req.body;
     if (!userId) {
@@ -8,7 +11,7 @@ const accessChat = expressAsyncHandler(async (req, res) => {
         return res.sendStatus(400);
     }
 
-    var isChat = await chats.find({
+    var isChat = await Chat.find({
         isGroupChat: false, //both should be true
         $and: [
             { users: { $elemMatch: { $eq: req.user._id } } },
