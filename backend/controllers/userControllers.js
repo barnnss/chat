@@ -73,7 +73,7 @@ const allUsers = asyncHandler(async (req, res) => {
     }
     : {}; //else
   
-  const users = await User.find(keyword). //ne=not equal to
+  const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });//ne=not equal to
   res.send(users);
 
 });
